@@ -6,10 +6,35 @@ Vue.use(Router)
 export default new Router({
     routes: [{
             path: '/',
-            name: 'HelloWorld',
+            name: 'index',
             component: resolve =>
-                require(['./../components/HelloWorld.vue'], resolve)
-        },
+                require(['./../view/index.vue'], resolve),
+            children: [{
+                    path: '/',
+                    name: 'home',
+                    component: resolve =>
+                        require(['./../view/home.vue'], resolve),
+                },
+                {
+                    path: 'list',
+                    name: 'list',
+                    component: resolve =>
+                        require(['./../view/list.vue'], resolve),
+                },
+                {
+                    path: 'detail',
+                    name: 'detail',
+                    component: resolve =>
+                        require(['./../view/detail.vue'], resolve),
+                },
+                {
+                    path: 'myinfo',
+                    name: 'myinfo',
+                    component: resolve =>
+                        require(['./../view/myinfo.vue'], resolve)
+                }
+            ]
+        }
         // {
         //     path: '/home',
         //     component: () =>
